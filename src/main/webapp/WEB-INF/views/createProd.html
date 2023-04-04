@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+<div align="center">
+    <a href="/song">Back To List</a>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+        <script th:inline="javascript">
+            setTimeout(function () {
+                window.location.href = /*[[@{/shop}]]*/ '#';
+            }, 3000);
+        </script>
+    </th:block>
+    <form th:action="@{/product/create}" th:object="${products}" method="post">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" th:field="*{name}" escapeXml="false"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" th:field="*{price}" escapeXml="false"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" th:field="*{description}" escapeXml="false"></td>
+            </tr>
+        </table>
+        <input type="submit" value="Save">
+    </form>
+</div>
+</body>
+</html>
